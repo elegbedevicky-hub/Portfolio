@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Victoria Elegbede — Customer Success Specialist</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0f2240;
+    --blue: #1a3a6b;
+    --accent: #c8a96e;
+    --accent-light: #e8d5a8;
+    --cream: #faf8f4;
+    --white: #ffffff;
+    --gray: #6b7280;
+    --light-gray: #f3f0eb;
+    --text: #1a1a2e;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(15, 34, 64, 0.97);
+    backdrop-filter: blur(10px);
+    padding: 18px 60px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    color: var(--accent);
+    font-size: 1.1rem;
+    letter-spacing: 0.05em;
+  }
+  .nav-links { display: flex; gap: 36px; list-style: none; }
+  .nav-links a {
+    color: rgba(255,255,255,0.75);
+    text-decoration: none;
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--accent); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    background: var(--navy);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 70% 50%, rgba(200,169,110,0.08) 0%, transparent 65%);
+    pointer-events: none;
+  }
+  .hero-pattern {
+    position: absolute; top: 0; right: 0;
+    width: 50%; height: 100%;
+    opacity: 0.04;
+    background-image: repeating-linear-gradient(
+      45deg,
+      var(--accent) 0, var(--accent) 1px,
+      transparent 0, transparent 50%
+    );
+    background-size: 24px 24px;
+  }
+  .hero-left {
+    display: flex; flex-direction: column;
+    justify-content: center;
+    padding: 120px 60px 80px 80px;
+    position: relative; z-index: 2;
+  }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(200,169,110,0.12);
+    border: 1px solid rgba(200,169,110,0.3);
+    color: var(--accent);
+    padding: 6px 16px;
+    border-radius: 100px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    width: fit-content;
+    margin-bottom: 28px;
+    animation: fadeUp 0.8s ease both;
+  }
+  .hero-badge::before {
+    content: '';
+    width: 6px; height: 6px;
+    background: var(--accent);
+    border-radius: 50%;
+    animation: pulse 2s ease infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(1.4); }
+  }
+  .hero-name {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.8rem, 5vw, 4.2rem);
+    color: var(--white);
+    line-height: 1.1;
+    margin-bottom: 8px;
+    animation: fadeUp 0.8s 0.1s ease both;
+  }
+  .hero-name span { color: var(--accent); display: block; }
+  .hero-role {
+    font-size: 1rem;
+    color: rgba(255,255,255,0.5);
+    font-weight: 300;
+    letter-spacing: 0.08em;
+    margin-bottom: 32px;
+    animation: fadeUp 0.8s 0.2s ease both;
+  }
+  .hero-desc {
+    font-size: 1.05rem;
+    color: rgba(255,255,255,0.7);
+    line-height: 1.75;
+    max-width: 480px;
+    margin-bottom: 48px;
+    font-weight: 300;
+    animation: fadeUp 0.8s 0.3s ease both;
+  }
+  .hero-cta {
+    display: flex; gap: 16px; flex-wrap: wrap;
+    animation: fadeUp 0.8s 0.4s ease both;
+  }
+  .btn-primary {
+    background: var(--accent);
+    color: var(--navy);
+    padding: 14px 32px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
+    transition: all 0.2s;
+  }
+  .btn-primary:hover { background: var(--accent-light); transform: translateY(-2px); }
+  .btn-outline {
+    border: 1px solid rgba(255,255,255,0.25);
+    color: rgba(255,255,255,0.8);
+    padding: 14px 32px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
+    transition: all 0.2s;
+  }
+  .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+  .hero-right {
+    display: flex; flex-direction: column;
+    justify-content: center; align-items: center;
+    padding: 120px 60px 80px 40px;
+    position: relative; z-index: 2;
+    gap: 20px;
+  }
+
+  /* stat cards in hero */
+  .stat-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(200,169,110,0.15);
+    border-radius: 12px;
+    padding: 28px 36px;
+    width: 100%; max-width: 320px;
+    animation: fadeUp 0.8s ease both;
+  }
+  .stat-card:nth-child(2) { animation-delay: 0.15s; }
+  .stat-card:nth-child(3) { animation-delay: 0.3s; }
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.8rem;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .stat-label {
+    font-size: 0.8rem;
+    color: rgba(255,255,255,0.5);
+    font-weight: 400;
+    letter-spacing: 0.05em;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── SECTION BASE ── */
+  section { padding: 100px 80px; }
+  .section-label {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 12px;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 3.5vw, 2.8rem);
+    color: var(--navy);
+    line-height: 1.2;
+    margin-bottom: 48px;
+  }
+  .section-title em { font-style: italic; color: var(--accent); }
+
+  /* ── ACHIEVEMENTS ── */
+  #achievements { background: var(--white); }
+  .achievements-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-bottom: 60px;
+  }
+  .achievement-card {
+    background: var(--cream);
+    border-radius: 12px;
+    padding: 36px 32px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.25s, box-shadow 0.25s;
+    border: 1px solid rgba(0,0,0,0.05);
+  }
+  .achievement-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 48px rgba(15,34,64,0.1);
+  }
+  .achievement-card::after {
+    content: '';
+    position: absolute; bottom: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--accent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s;
+  }
+  .achievement-card:hover::after { transform: scaleX(1); }
+  .achievement-icon {
+    width: 44px; height: 44px;
+    background: var(--navy);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 20px;
+    font-size: 1.2rem;
+  }
+  .achievement-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    color: var(--navy);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .achievement-num span { color: var(--accent); }
+  .achievement-title {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 10px;
+  }
+  .achievement-desc {
+    font-size: 0.85rem;
+    color: var(--gray);
+    line-height: 1.65;
+  }
+
+  /* timeline */
+  .timeline { position: relative; }
+  .timeline::before {
+    content: '';
+    position: absolute; left: 0; top: 8px; bottom: 8px;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--accent), rgba(200,169,110,0.1));
+  }
+  .timeline-item {
+    padding-left: 36px;
+    margin-bottom: 48px;
+    position: relative;
+  }
+  .timeline-item::before {
+    content: '';
+    position: absolute; left: -5px; top: 6px;
+    width: 12px; height: 12px;
+    background: var(--accent);
+    border-radius: 50%;
+    border: 2px solid var(--white);
+  }
+  .timeline-date {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .timeline-role {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 2px;
+  }
+  .timeline-company {
+    font-size: 0.85rem;
+    color: var(--gray);
+    margin-bottom: 14px;
+    font-style: italic;
+  }
+  .timeline-bullets { list-style: none; }
+  .timeline-bullets li {
+    font-size: 0.875rem;
+    color: #444;
+    line-height: 1.65;
+    padding: 4px 0;
+    padding-left: 16px;
+    position: relative;
+  }
+  .timeline-bullets li::before {
+    content: '→';
+    position: absolute; left: 0;
+    color: var(--accent);
+    font-size: 0.8rem;
+  }
+
+  /* ── SKILLS ── */
+  #skills { background: var(--navy); }
+  #skills .section-title { color: var(--white); }
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 48px 80px;
+  }
+  .skill-group-title {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 20px;
+  }
+  .skill-item { margin-bottom: 16px; }
+  .skill-top {
+    display: flex; justify-content: space-between;
+    margin-bottom: 7px;
+  }
+  .skill-name { font-size: 0.875rem; color: rgba(255,255,255,0.85); font-weight: 500; }
+  .skill-pct { font-size: 0.8rem; color: var(--accent); font-weight: 600; }
+  .skill-bar {
+    height: 4px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .skill-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent), var(--accent-light));
+    border-radius: 2px;
+    width: 0;
+    transition: width 1.2s cubic-bezier(0.4,0,0.2,1);
+  }
+  .tag-cloud { display: flex; flex-wrap: wrap; gap: 10px; }
+  .tag {
+    background: rgba(200,169,110,0.1);
+    border: 1px solid rgba(200,169,110,0.25);
+    color: rgba(255,255,255,0.7);
+    padding: 7px 16px;
+    border-radius: 100px;
+    font-size: 0.78rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    transition: all 0.2s;
+  }
+  .tag:hover { background: rgba(200,169,110,0.2); color: var(--accent); }
+
+  /* ── EXPERIENCE ── */
+  #experience { background: var(--cream); }
+
+  /* ── CERTIFICATIONS ── */
+  #certifications { background: var(--light-gray); }
+  .cert-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .cert-card {
+    background: var(--white);
+    border-radius: 10px;
+    padding: 28px 24px;
+    border: 1px solid rgba(0,0,0,0.06);
+    display: flex; align-items: flex-start; gap: 16px;
+    transition: transform 0.2s;
+  }
+  .cert-card:hover { transform: translateY(-4px); }
+  .cert-icon {
+    width: 40px; height: 40px; flex-shrink: 0;
+    background: var(--navy);
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem;
+  }
+  .cert-name { font-size: 0.9rem; font-weight: 600; color: var(--navy); margin-bottom: 4px; }
+  .cert-date { font-size: 0.78rem; color: var(--gray); }
+
+  /* ── CONTACT ── */
+  #contact {
+    background: var(--navy);
+    text-align: center;
+    padding: 100px 80px;
+  }
+  #contact .section-title { color: var(--white); margin-bottom: 16px; }
+  .contact-sub {
+    font-size: 1rem;
+    color: rgba(255,255,255,0.55);
+    margin-bottom: 48px;
+    font-weight: 300;
+  }
+  .contact-links { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+  .contact-link {
+    display: flex; align-items: center; gap: 10px;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(200,169,110,0.2);
+    color: rgba(255,255,255,0.8);
+    padding: 14px 28px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 0.875rem;
+    transition: all 0.2s;
+  }
+  .contact-link:hover { background: rgba(200,169,110,0.1); color: var(--accent); border-color: var(--accent); }
+
+  /* footer */
+  footer {
+    background: #08152a;
+    text-align: center;
+    padding: 24px;
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.25);
+    letter-spacing: 0.05em;
+  }
+
+  /* responsive */
+  @media (max-width: 900px) {
+    nav { padding: 16px 24px; }
+    .nav-links { display: none; }
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-left { padding: 120px 32px 48px; }
+    .hero-right { padding: 0 32px 80px; }
+    section { padding: 70px 32px; }
+    .achievements-grid { grid-template-columns: 1fr; }
+    .skills-grid { grid-template-columns: 1fr; gap: 36px; }
+    .cert-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Victoria Elegbede</div>
+  <ul class="nav-links">
+    <li><a href="#achievements">Achievements</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#certifications">Certifications</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-pattern"></div>
+  <div class="hero-left">
+    <div class="hero-badge">Available for Remote Roles</div>
+    <h1 class="hero-name">Victoria<span>Elegbede</span></h1>
+    <p class="hero-role">Customer Success · Merchant Operations · Remote Support</p>
+    <p class="hero-desc">
+      5+ years turning customer friction into satisfaction metrics that matter. I specialise in payment platform support, merchant onboarding, and building the processes that make customer success teams measurably better.
+    </p>
+    <div class="hero-cta">
+      <a href="#achievements" class="btn-primary">View My Work</a>
+      <a href="#contact" class="btn-outline">Get In Touch</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="stat-card">
+      <div class="stat-num">40%</div>
+      <div class="stat-label">Reduction in unresolved cases through workflow redesign</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">30%</div>
+      <div class="stat-label">Increase in customer satisfaction scores</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-num">85%</div>
+      <div class="stat-label">First-contact resolution rate across 150+ daily interactions</div>
+    </div>
+  </div>
+</section>
+
+<!-- ACHIEVEMENTS -->
+<section id="achievements">
+  <div class="section-label">Proven Impact</div>
+  <div class="section-title">Results that <em>speak for themselves</em></div>
+
+  <div class="achievements-grid">
+    <div class="achievement-card">
+      <div class="achievement-icon">📉</div>
+      <div class="achievement-num">40<span>%</span></div>
+      <div class="achievement-title">Fewer Unresolved Cases</div>
+      <div class="achievement-desc">Redesigned escalation tracking and follow-up workflows at Tingtel, cutting the backlog by nearly half and improving team accountability.</div>
+    </div>
+    <div class="achievement-card">
+      <div class="achievement-icon">⭐</div>
+      <div class="achievement-num">30<span>%</span></div>
+      <div class="achievement-title">Higher Customer Satisfaction</div>
+      <div class="achievement-desc">Refined engagement strategies and coaching drove a significant CSAT uplift — from first response quality to resolution follow-through.</div>
+    </div>
+    <div class="achievement-card">
+      <div class="achievement-icon">⚡</div>
+      <div class="achievement-num">25<span>%</span></div>
+      <div class="achievement-title">Faster Issue Resolution</div>
+      <div class="achievement-desc">Improved issue prioritisation and escalation pathways at Cicoserve, reducing the time from query to resolution by a quarter.</div>
+    </div>
+    <div class="achievement-card">
+      <div class="achievement-icon">🎯</div>
+      <div class="achievement-num">85<span>%</span></div>
+      <div class="achievement-title">First-Contact Resolution</div>
+      <div class="achievement-desc">Maintained industry-leading FCR across 150+ daily interactions — preventing repeat contacts and protecting NPS at Cicoserve.</div>
+    </div>
+    <div class="achievement-card">
+      <div class="achievement-icon">✅</div>
+      <div class="achievement-num">40<span>%</span></div>
+      <div class="achievement-title">Fewer KYC Errors</div>
+      <div class="achievement-desc">Led KYC onboarding reform at Prominent Securities — rigorous documentation reviews cut verification errors by 40% across 500+ customers.</div>
+    </div>
+    <div class="achievement-card">
+      <div class="achievement-icon">👥</div>
+      <div class="achievement-num">500<span>+</span></div>
+      <div class="achievement-title">Customers Trained</div>
+      <div class="achievement-desc">Delivered one-on-one and virtual platform training to over 500 customers, reducing inbound support queries and boosting self-serve adoption.</div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-label">Capabilities</div>
+  <div class="section-title" style="color:var(--white);">Skills & <em>Expertise</em></div>
+  <div class="skills-grid">
+    <div>
+      <div class="skill-group-title">Customer & Merchant Operations</div>
+      <div class="skill-item">
+        <div class="skill-top"><span class="skill-name">Merchant Onboarding & Setup</span><span class="skill-pct">95%</span></div>
+        <div class="skill-bar"><div class="skill-fill" data-width="95"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-top"><span class="skill-name">Customer Satisfaction Management</span><span class="skill-pct">92%</span></div>
+        <div class="skill-bar"><div class="skill-fill" data-width="92"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-top"><span class="skill-name">KYC & Documentation</span><span class="skill-pct">90%</span></div>
+        <div class="skill-bar"><div class="skill-fill" data-width="90"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-top"><span class="skill-name">Transaction Monitoring & Review</span><span class="skill-pct">88%</span></div>
+        <div class="skill-bar"><div class="skill-fill" data-width="88"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-top"><span class="skill-name">Escalation Management</span><span class="skill-pct">93%</span></div>
+        <div class="skill-bar"><div class="skill-fill" data-width="93"></div></div>
+      </div>
+    </div>
+
+    <div>
+      <div class="skill-group-title">Quality & Data</div>
+      <div class="skill-item">
+        <div class="skill-top"><span class="skill-name">Data Annotation & Accuracy Checks</span><span class="skill-pct">88%</span></div>
+        <div class="skill-bar"><div class="skill-fill" data-width="88"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-top"><span class="skill-name">Issue Categorisation & Triage</span><span class="skill-pct">92%</span></div>
+        <div class="skill-bar"><div class="skill-fill" data-width="92"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-top"><span class="skill-name">Pairwise Comparison</span><span class="skill-pct">85%</span></div>
+        <div class="skill-bar"><div class="skill-fill" data-width="85"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-top"><span class="skill-name">SOP Documentation</span><span class="skill-pct">90%</span></div>
+        <div class="skill-bar"><div class="skill-fill" data-width="90"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-top"><span class="skill-name">Team Leadership & Coaching</span><span class="skill-pct">88%</span></div>
+        <div class="skill-bar"><div class="skill-fill" data-width="88"></div></div>
+      </div>
+    </div>
+
+    <div>
+      <div class="skill-group-title">Remote & Soft Skills</div>
+      <div class="tag-cloud">
+        <span class="tag">Remote Collaboration</span>
+        <span class="tag">Async Communication</span>
+        <span class="tag">Attention to Detail</span>
+        <span class="tag">Critical Thinking</span>
+        <span class="tag">Stakeholder Engagement</span>
+        <span class="tag">Self-managed Productivity</span>
+        <span class="tag">Digital Ticketing</span>
+        <span class="tag">Process Improvement</span>
+        <span class="tag">Virtual Onboarding</span>
+      </div>
+    </div>
+
+    <div>
+      <div class="skill-group-title">Languages</div>
+      <div class="skill-item">
+        <div class="skill-top"><span class="skill-name">English</span><span class="skill-pct">Expert</span></div>
+        <div class="skill-bar"><div class="skill-fill" data-width="98"></div></div>
+      </div>
+      <div class="skill-item">
+        <div class="skill-top"><span class="skill-name">Yoruba</span><span class="skill-pct">Native</span></div>
+        <div class="skill-bar"><div class="skill-fill" data-width="100"></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-label">Career Timeline</div>
+  <div class="section-title">Where I've <em>made an impact</em></div>
+  <div class="timeline">
+
+    <div class="timeline-item">
+      <div class="timeline-date">May 2025 – Present</div>
+      <div class="timeline-role">Merchant Success Officer</div>
+      <div class="timeline-company">Uniswitch Technology Limited · Lagos, Nigeria</div>
+      <ul class="timeline-bullets">
+        <li>Manage end-to-end merchant onboarding and payment channel integration</li>
+        <li>Review transaction data to identify anomalies, discrepancies, and compliance risks</li>
+        <li>Conduct pairwise comparisons and accuracy checks on merchant datasets</li>
+        <li>Triage and categorise support cases across technical, operational, and financial streams</li>
+        <li>Develop and maintain structured SOPs for merchant support operations</li>
+      </ul>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-date">Oct 2023 – May 2025</div>
+      <div class="timeline-role">Team Lead, Customer Service</div>
+      <div class="timeline-company">Tingtel Limited · Lagos, Nigeria</div>
+      <ul class="timeline-bullets">
+        <li>Led a 4-member support team, achieving 40% reduction in unresolved cases</li>
+        <li>Drove 30% increase in customer satisfaction through refined engagement strategies</li>
+        <li>Analysed activity trends and implemented targeted coaching based on findings</li>
+        <li>Trained team on annotation accuracy, documentation, and support best practices</li>
+      </ul>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-date">Oct 2022 – Sep 2023</div>
+      <div class="timeline-role">Customer Service Officer</div>
+      <div class="timeline-company">Cicoserve Payment Limited · Lagos, Nigeria</div>
+      <ul class="timeline-bullets">
+        <li>Handled 150+ daily interactions maintaining 85% first-contact resolution rate</li>
+        <li>Reduced resolution time by 25% through accurate triage and escalation</li>
+        <li>Identified and converted upsell opportunities during support interactions</li>
+      </ul>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-date">Feb 2021 – Sep 2022</div>
+      <div class="timeline-role">Customer Relationship Officer</div>
+      <div class="timeline-company">Prominent Securities Limited · Lagos, Nigeria</div>
+      <ul class="timeline-bullets">
+        <li>Delivered virtual and one-on-one training for 500+ customers on platform usage</li>
+        <li>Led KYC onboarding reforms, cutting verification errors by 40%</li>
+        <li>Supported customers with account access and technical troubleshooting</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section id="certifications">
+  <div class="section-label">Credentials</div>
+  <div class="section-title">Education & <em>Training</em></div>
+  <div class="cert-grid">
+    <div class="cert-card">
+      <div class="cert-icon">🎓</div>
+      <div>
+        <div class="cert-name">PGD – Information Technology</div>
+        <div class="cert-date">National Open University of Nigeria · In Progress</div>
+      </div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-icon">📊</div>
+      <div>
+        <div class="cert-name">HND – Statistics</div>
+        <div class="cert-date">Yaba College of Technology · Nov 2019</div>
+      </div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-icon">📐</div>
+      <div>
+        <div class="cert-name">ND – Statistics</div>
+        <div class="cert-date">The Polytechnic, Ibadan · Nov 2016</div>
+      </div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-icon">💻</div>
+      <div>
+        <div class="cert-name">ALX Virtual Assistant Course</div>
+        <div class="cert-date">ALX Africa · Oct 2024</div>
+      </div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-icon">🏅</div>
+      <div>
+        <div class="cert-name">NYSC Discharge Certificate</div>
+        <div class="cert-date">National Youth Service Corps · Feb 2022</div>
+      </div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-icon">🤝</div>
+      <div>
+        <div class="cert-name">Jobberman Soft Skills Training</div>
+        <div class="cert-date">Jobberman Nigeria · Aug 2020</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-label">Let's Connect</div>
+  <div class="section-title">Open to <em>Remote Opportunities</em></div>
+  <p class="contact-sub">Based in Lagos, Nigeria · Available globally · Fully remote-ready</p>
+  <div class="contact-links">
+    <a href="mailto:elegbedevicky@gmail.com" class="contact-link">
+      <span>✉</span> elegbedevicky@gmail.com
+    </a>
+    <a href="tel:+2347053780783" class="contact-link">
+      <span>📱</span> +234 705 378 0783
+    </a>
+    <a href="https://www.linkedin.com/in/victoriaelegbede" target="_blank" class="contact-link">
+      <span>🔗</span> LinkedIn Profile
+    </a>
+  </div>
+</section>
+
+<footer>
+  © 2026 Victoria Elegbede · Customer Success & Merchant Operations Specialist
+</footer>
+
+<script>
+  // Animate skill bars on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.querySelectorAll('.skill-fill').forEach(bar => {
+          bar.style.width = bar.dataset.width + '%';
+        });
+      }
+    });
+  }, { threshold: 0.3 });
+
+  const skillsSection = document.getElementById('skills');
+  if (skillsSection) observer.observe(skillsSection);
+
+  // Smooth reveal on scroll for cards
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.achievement-card, .cert-card, .timeline-item').forEach((el, i) => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(30px)';
+    el.style.transition = `opacity 0.5s ${i * 0.08}s ease, transform 0.5s ${i * 0.08}s ease`;
+    revealObserver.observe(el);
+  });
+</script>
+</body>
+</html>
