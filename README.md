@@ -77,4 +77,4 @@ Remote Collaboration · Async Communication · CRM & Ticketing Systems · Critic
 - ✉️ Email: [elegbedevicky@gmail.com](mailto:elegbedevicky@gmail.com)
 - 📞 Phone: +234 705 378 0783
 - 💼 LinkedIn: [linkedin.com/in/victoriaelegbede](https://www.linkedin.com/in/victoriaelegbede)
-- 🌍 Portfolio: [victoriaelegbede.github.io](https://victoriaelegbede.github.io)
+- 🌍 Portfolio: [[victoriaelegbede.github.io](https://victoriaelegbede.github.io)](https://elegbedevicky-hub.github.io/Portfolio/)
